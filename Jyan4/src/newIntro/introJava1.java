@@ -1,6 +1,6 @@
-package intro;
+package newIntro;
 
-public class intro1 {
+public class introJava1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
