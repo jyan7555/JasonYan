@@ -14,9 +14,18 @@ public class CodingConventions {
 		*math the name of the class
 		
 	*/
-	public CodingConventions() {
+	public CodingConventions(String name, int index) {
 		//In Java fields are instantiated in a constructor 
-		name = "Mr.Nockles";
-		description = "is a teacher";
+		
+		//There is a local variable called 'name' and a field called 'name'
+		//the field persists, but the local variable is destroyed at the end of this method
+		//distinguish the field by using the reserved word "this"
+		this.name = name;
+		description = IntroJava1.DESCRIPTIONS[index];
+	}
+	
+	public void doStuff() {
+		System.out.println(name + description);//use a space between your operations
+		System.out.println("The square root of 12 is " + Math.sqrt(12));
 	}
 }
