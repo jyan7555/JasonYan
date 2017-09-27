@@ -60,3 +60,4 @@ public class AttendanceMain {
 		System.out.print(printString);
 	}
 
+}
