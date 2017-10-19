@@ -1,17 +1,22 @@
 package warmup;
 
+import java.util.Arrays;
+
 public class ObjectArrays {
 	
 	public ObjectArrays() {
-		Object[] people = new Object[20];
+		Person[] people = new Person[12];
 		populate(people);
-		people[0] = new Thing("coffee maker");
-		for (Object p: people) {
-			System.out.println(p);
+		//people[0] = new Thing("toaster oven");
+		for (Person p: people) {
+			p.mingle(people);
+			p.printFriends();
 		}
+		//Person[] group = selectGroup(people,4);
+		//System.out.println(Arrays.toString(group));
 	}
 
-	private void populate(Object[] people) {
+	public void populate(Object[] people) {
 		for (int i=0; i <people.length; i++) {
 			String firstName = randomNameFrom(Person.FIRST_START, Person.FIRST_MIDDLE, Person.FIRST_END);
 			String lastName = randomNameFrom(Person.LAST_START, Person.LAST_MIDDLE, Person.LAST_END);
@@ -28,15 +33,37 @@ public class ObjectArrays {
 		}
 	}
 
-	private Borough randomBorough() {
+	public Borough randomBorough() {
 		return Borough.NY_BOROUGHS[(int)(Math.random()*Borough.NY_BOROUGHS.length)];
 	}
 
-	private String randomNameFrom(String[] a, String[] b, String[] c) {
+	public String randomNameFrom(String[] a, String[] b, String[] c) {
 		return get(a)+get(b)+get(c);
 	}
 
-	private String get(String[] a) {
+	public String get(String[] a) {
 		return a[(int)(Math.random()*a.length)];
+	}
+	public Person[] selectGroup(Person[] population, int length) {
+		Person[] array = new Person[length];
+		int[] numArr = new int[length];
+		for (int i=0; i<=length-1;i++) {
+			int randomNum = 0;
+			while(!noRepeat(numArr, randomNum)) {
+				randomNum = (int)(Math.random()*population.length);
+			}
+			numArr[i] = randomNum;
+			array[i] = population[randomNum];
+		}
+		return array;
+		
+	}
+	public boolean noRepeat(int[] arr, int num) {
+		for (int i=0; i<= arr.length-1;i++) {
+			if (arr[i] == num) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
