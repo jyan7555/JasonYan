@@ -66,4 +66,33 @@ public class ObjectArrays {
 		}
 		return true;
 	}
+	/**
+	 * return the number of differences between the two arrays
+	 * A "difference" means they don't have the same element at the same position
+	 * @param arr1
+	 * @param arr2
+	 * @return
+	 */
+	public double countDifferences(Person[] arr1, Person[] arr2) {
+		int count = 0;
+		for (int i=0; i< arr1.length; i++) {
+			if (arr1[i] == arr2[i]) {
+				count++;
+			}
+		}
+		return count;
+	}
+	/**
+	 * calls count differences on two Person arrays,
+	 * each array must contain the same elements, but randomly ordered
+	 * print the number of differences between the two arrays
+	 * Do this 100 times, print the average
+	 */
+	public void testShuffling() {
+		Person[] arr1 = new Person[50];
+		Person[] arr2 = new Person[50];
+		populate(arr1);
+	
+		
+	}
 }
