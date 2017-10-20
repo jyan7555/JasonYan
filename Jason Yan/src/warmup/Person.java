@@ -15,6 +15,7 @@ public class Person {
 	private Borough home;
 	private Hobby hobby;
 	private Person[] friends;
+	private String nickname;
 	
 	public Person(String first, String last, Borough home) {
 		firstName = first;
@@ -22,6 +23,7 @@ public class Person {
 		this.home = home;
 		this.hobby = Hobby.randomHobby();
 		friends = new Person[3]; 
+		this.nickname= createNickName(first);
 		
 	}
 	/** Chooses friends from People based on who is of the same class
@@ -57,7 +59,7 @@ public class Person {
 		friends[0] = p;
 	}
 	public String toString() {
-		return "My name is " + firstName + " " + lastName + " and I live in " + home + ".";
+		return "My name is " + firstName + " " + lastName + " and I live in " + home + ". Call me " +nickname;
 	}
 	public Person betterFriend(Person p, Person q) {
 		if (p == null) {
@@ -71,5 +73,37 @@ public class Person {
 		}
 		return p;
 		
+	}
+	//JAVA IS PASS-BY-VALUE
+	//meaning the parameters of a method are just values, not reference
+	//so if you change those values, the original object is not affected.
+	//In this case, 'name' will not be changed. In fact, nothing can be changed
+	public static String createNickName(String name) {
+		boolean firstVowel = true;
+		for (int i=0; i<= name.length()-1; i++) {
+			if (isVowel(name.substring(i,i+1))) {
+				if (firstVowel) {
+					firstVowel = false;
+				}
+				else {
+					return name.substring(0,i);
+				}
+			}
+		}
+		return name;
+	}
+	public static boolean isVowel(String a) {
+		a = a.toLowerCase();
+		if (a.equals("a")|| a.equals("e")|| a.equals("i")|| a.equals("o")||a.equals("u")) {
+			return true;
+		}
+		return false;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String s) {
+		this.firstName = s;
+		nickname = createNickName(s);
 	}
 }

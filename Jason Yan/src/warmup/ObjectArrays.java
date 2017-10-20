@@ -12,6 +12,7 @@ public class ObjectArrays {
 			p.mingle(people);
 			p.printFriends();
 		}
+		//System.out.println(Person.createNickName("Jonathan"));
 		//Person[] group = selectGroup(people,4);
 		//System.out.println(Arrays.toString(group));
 	}
