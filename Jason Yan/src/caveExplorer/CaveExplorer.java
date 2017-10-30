@@ -1,5 +1,7 @@
 package caveExplorer;
 
+import java.util.Scanner;
+
 public class CaveExplorer {
 	public static CaveRoom[][] caves;//for room in the cave
 	public static Scanner in;//for user input
@@ -7,7 +9,7 @@ public class CaveExplorer {
 	public static Inventory inventory;
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO Auto-gneerated method stub
 
 	}
 

@@ -106,4 +106,7 @@ public class CaveRoom {
 		String validEntries = "wdsa";
 		return validEntries.indexOf(input) > -1 && input.length() == 1;
 	}
+	public Door getDoor(int west2) {
+		return doors[direction];
+	}
 }
