@@ -31,7 +31,7 @@ public class Inventory {
 							}
 							else if (i == 2) {
 								//draw space if door to south is open
-								if (cr.getDoor(CaveRoom.SOUTH) != null && cr.getDoor(CaveRoom.SOUTH).isOpen())) {
+								if (cr.getDoor(CaveRoom.SOUTH) != null && cr.getDoor(CaveRoom.SOUTH).isOpen()) {
 									text += "   ";//3 spaces
 								}
 								else {

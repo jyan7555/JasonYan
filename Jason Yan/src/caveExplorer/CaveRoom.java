@@ -78,35 +78,49 @@ public class CaveRoom {
 	}
 	public void interpretInput(String input) {
 		while(isValid(input)) {
-			System.out.println("You can you only enter 'w','a','s', or 'd'");
+			printAllowedEntry();
 			input = CaveExplorer.in.nextLine();
 			//task: convert user input into a direction
 		
-			String output = "wdsa";
+			String output = validKeys();
 			/*int num = output.indexOf(input);
 			int direction = num;*/
 			
-			goToRoom(output.indexOf(input));
+			respondToKey(output.indexOf(input));
 		}
 	}
-	private void goToRoom(int direction) {
+	public String validKeys() {
+		return "wdsa";
+	}
+	public void printAllowedEntry() {
+		System.out.println("You can you only enter 'w','a','s', or 'd'");
+	}
+	public void respondToKey(int direction) {
 		//first, protect against null pointer exception
 		//(user cannot go through non-existent door)
-		if (borderingRooms[direction] != null && doors[direction] != null) {
-			CaveExplorer.currentRoom.leave();
-			CaveExplorer.currentRoom = borderingRooms[direction];
-			CaveExplorer.currentRoom.enter();
-			CaveExplorer.inventory.updateMap();
+		if (direction <4) {
+			if (borderingRooms[direction] != null && doors[direction] != null) {
+				CaveExplorer.currentRoom.leave();
+				CaveExplorer.currentRoom = borderingRooms[direction];
+				CaveExplorer.currentRoom.enter();
+				CaveExplorer.inventory.updateMap();
+			}
 		}
+		else {
+			performAction(direction);
+		}
+	}
+	public void performAction(int direction) {
+		System.out.println("That key does nothing.");
 	}
 	public static void setUpCaves() {
 		
 	}
 	private boolean isValid(String input) {
-		String validEntries = "wdsa";
+		String validEntries = validKeys();
 		return validEntries.indexOf(input) > -1 && input.length() == 1;
 	}
 	public Door getDoor(int west2) {
-		return doors[direction];
+		return doors[west2];
 	}
 }
