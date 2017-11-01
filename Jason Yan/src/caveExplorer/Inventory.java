@@ -43,5 +43,9 @@ public class Inventory {
 			}
 		}
 	}
+	public String getDescription() {
+		return map;
+//		return "You have nothing in your inventory.";
+	}
 
 }
