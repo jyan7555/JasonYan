@@ -114,7 +114,34 @@ public class CaveRoom {
 		System.out.println("That key does nothing.");
 	}
 	public static void setUpCaves() {
-		
+		//ALL OF THIS CODE CAN BE CHANGED
+		//1. Decide how big your caves should be
+		CaveExplorer.caves = new CaveRoom[5][5];
+		//2. Populate with caves and a defualt description: hint: when starting, use coordinates (helps debugging)
+		for(int row = 0; row < CaveExplorer.caves.length; row++) {
+			//PLEASE PAY ATTENTION TO THE DIFFERENCE:
+			for(int col = 0; col < CaveExplorer.caves[row].length; col++) {
+				//create a "default" cave
+				CaveExplorer.caves[row][col] = 
+						new CaveRoom("This cave has coords ("+row+","+col+")");
+			}
+		}
+		//3. Replace default rooms with custom rooms
+		//--- WE WILL DO LATER
+
+		//4. Set your starting room:
+		CaveExplorer.currentRoom = CaveExplorer.caves[0][1];
+		CaveExplorer.currentRoom.enter();
+		//5. Set up dooors
+		CaveRoom[][] c = CaveExplorer.caves;
+		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		/**
+		 * Special requests:
+		 * moving objects in caves
+		 * what happens when you lose?
+		 * can another object move toward you?
+		 */
+
 	}
 	private boolean isValid(String input) {
 		String validEntries = validKeys();

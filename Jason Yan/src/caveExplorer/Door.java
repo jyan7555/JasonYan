@@ -34,5 +34,10 @@ public class Door {
 	public void setDetails(String details) {
 		this.details = details;
 	}
+	public Door getDoor(int direction) {
+		if (direction >= 0) {
+			
+		}
+	}
 
 }
